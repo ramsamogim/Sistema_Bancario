@@ -1,69 +1,43 @@
 # Sistema_Bancario
-Menu = """
------------------------ Menu ------------------------
 
-[D] : Depositar
-[S] : Saque
-[E] : Extrato
-[O] : Sair
+## **Criando um Sistema Bancário com Python**
+Nivel: Básico
 
------------------------------------------------------
-"""
-saldo = 0
-limite = 500
-extrato = ""
-n_saques = 0
-LIMITE_SAQUES = 3
+Conteudo: Conceitos Básicos
 
-while True:
-    opcao = input(Menu)
+Duração: 1h
 
-    if opcao == "D":
-        valor = float(input("iNFORME O VALOR DO DEPÓSITO: "))
+----
+### **DESAFIO**
 
-        if valor > 0:
-            print(f"Deposito realizado!!! R$ {valor:.2f}\n")
-            saldo += valor
-            extrato += f" Depósito realizado: {valor:.2f}\n"
+Fomos contratados por um grande banco para desenvolver o seu novo sistema. Esse banco deseja modernizar suas operações e para isso escollheu a llinguagem Python. Para a primeira versão do sistema devemos implementar apenas 3 operações: depósito, saque e extrato.
 
-        else:
-            print(" Operação não realizada, o valor depositado está errado")
-    elif opcao == "S":
-        valor = float(input("Informe o valor do saque: "))
+**Objetivo gereal**
 
-        excedeu_saldo = valor > saldo
+Criar um sistema bancário com as operações: 
+* Sacar
+* Depositar
+* Visualizar extrato
 
-        excedeu_limite = valor > limite
+---
 
-        excedeu_saques = n_saques == LIMITE_SAQUES
+**Operações**
 
-        if excedeu_saldo:
-            print("impossível de sacar esse valor, saldo insuficiente.")
+* Operação de depósito
 
-        elif excedeu_limite:
-            print(
-                "O valor do saque excedeu o limite de saque, faça o saque de um valor menor.")
+De ser possível depositar valores positivos para a minha conta bancaria. A v1 do projeto trabalha apenas com 1 usuario, dessa forma não precisamos nos preocupar em identificar qual é o número da agencia e conta bancaria. Todos os depositos devem ser armazenados em uma variavel e exibidos na operação de extrato.
 
-        elif excedeu_saques:
-            print("Operação não permitida, Número máximo de saques excedido!!!")
+* Operação de saque
 
-        elif valor > 0:
-            print(f"Saque realizado com sucesso, Saque de R$ {valor:.2f}\n")
-            saldo -= valor  # igual a saldo -= valor
-            # extrato = extrato + f"Saque:  R$ {valor:2f}\n
-            extrato += f"Saque:  R$  {valor:.2f}\n"
-            n_saques += 1  # n_saques = n_saques + 1
+O sistema deve permitir realizar 3 saque diários com imite maximo de R$ 500,00 por saque. Caso o usuario não tenha saldo em conta, o sistema deve exibir uma mensagem informando que não sera possivel sacar o dinheiro por fata de salldo. Todos os saques devem ser armazenados em uma variavel e exibidos na operação extrato.
 
-        else:
-            print("O valor informado está errado, tente novamente.")
+** Operação de extrato
 
-    elif opcao == "E":
-        print("\n -------------- Extrato ---------------") # aqui o sistema irá mostrar que não teve movimentações, quando realmente não as teve. E ele exibirá o extrato quando houver movimentações que foram concatenadas no extrato anteriormente.
-        print(" Não foram realizados movimentações." if not extrato else extrato)
-        print(f"\n Saldo:  R$  {saldo:.2f}")
-        print("-----------------------------------------")
+Essa operação deve listar todos os depositos e saques realizados na conta. No fim da listagem deve ser exibido o saldo atuall da conta. Se o extrato estiver em branco, exibir a mensagem: Não foram realizadas movimentações.
 
-    elif opcao == "O":
-        break
-    else:
-        print("Operação inválida, por favor selecione uma opção novamente")
+Os valores devem ser exibidos utilizando o formato R$ xxx.xx
+
+*Exemplos*
+
+1500.45 = R$ 1500.45      
+           
